@@ -24,6 +24,15 @@
   color: white;
 }
 
+@keyframes headerHover{
+    0%{
+        padding: 1px; 
+    }
+    100%{
+        padding: 10px;
+    }
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -36,3 +45,28 @@
     transform: rotate(360deg);
   }
 }
+
+footerend {
+height: 40px;
+bottom:0;
+left:0;
+right:0;
+font-family:'Times New Roman', Times, serif;
+font-size: 13px;
+font-weight: 500;
+color: rgba(92, 93, 97, 0.151);
+display: grid;
+grid-template-columns: repeat(8,auto);
+margin: 0 auto;
+grid-gap: 20px;
+
+}
+
+@media (max-width: 768px){
+    footerend{
+        display: grid;
+        grid-template-columns: repeat(1,auto);
+        margin: 0 auto;
+        grid-gap: 12px;    
+    }
+}  
