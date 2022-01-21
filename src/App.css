@@ -47,10 +47,7 @@
 }
 
 footerend {
-height: 40px;
-bottom:0;
-left:0;
-right:0;
+min-height: 40px;
 font-family:'Times New Roman', Times, serif;
 font-size: 13px;
 font-weight: 500;
@@ -67,6 +64,9 @@ grid-gap: 20px;
         display: grid;
         grid-template-columns: repeat(1,auto);
         margin: 0 auto;
-        grid-gap: 12px;    
+        grid-gap: 5px;    
+    }
+	footerend div:nth-child(3), footerend div:nth-child(5),footerend div:nth-child(6){
+    display: none;
     }
 }  

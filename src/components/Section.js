@@ -1,91 +1,130 @@
-import React, { useState } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
 import styled from "styled-components";
 import Fade from 'react-reveal/Fade';
-import Scroll from 'react-scroll';
 import Footer from './Footer';
 import "../App.css";
 
-var Element = Scroll.Element;
-var scroller = Scroll.scroller;
-scroller.scrollTo('myScrollToElement', {
-	duration: 1500,
-	delay: 100,
-	smooth: true,
-	containerId: 'ContainerElementID',
-	offset: 50, // Scrolls to element + 50 pixels down the page
-})
-
 function Section(props) {
-	const [scrollStatus, setScrollStatus] = useState(true);
-
 	return (
-		<Element name="myScrollToElement">
-			<Wrap bgImage={props.backgroundImg} onscroll={() => setScrollStatus(!scrollStatus)} show={scrollStatus}>
-				<Fade bottom>
-					<ItemText>
-						<h1>
-							{props.title}
-						</h1>
-						<p>
-							{props.description}
-							<a href="/">
-								{props.link}
-							</a>
-						</p>
-					</ItemText>
-				</Fade>
-				<Buttons>
-					<ButtonGroup>
-						<Fade left>
-							<LeftButton>
-								{props.leftBtnText}
-							</LeftButton>
-						</Fade>
-						<Fade right>
-							{
-								props.rightBtnText
+
+		<Wrap bgImage={props.backgroundImg}>
+			<Fade bottom>
+				<ItemText>
+					<h1>
+	
+						{props.title}
+					</h1>
+					<p>
+						{props.description}
+						{
+							props.link
 								&&
+								<a href="/">
+							{props.link}
+						</a>
+								}
+					</p>
+				</ItemText>
+			</Fade>
+			<Buttons>
+
+				{
+					(
+						props.leftBtnText
+						&&
+						props.rightBtnText
+						&&
+						<ButtonGroup>
+							<Fade left>
+								<LeftButton>
+									{props.leftBtnText}
+								</LeftButton>
+							</Fade>
+							<Fade right>
 								<RightButton>
 									{props.rightBtnText}
 								</RightButton>
-							}
-						</Fade>
-					</ButtonGroup>
-					{
-						(
-							props.footer
-							&&
-							<Footer footer={props.footer} />
-						)
-						||
-						<DownArrow src="/images/down-arrow.svg" />
-					}
-				</Buttons>
-			</Wrap>
-		</Element>
+							</Fade>
+						</ButtonGroup>
+					)
+					||
+					(
+						props.leftBtnText
+						&&
+						<ButtonGroup>
+							<Fade bottom>
+								<LeftButton>
+									{props.leftBtnText}
+								</LeftButton>
+							</Fade>
+						</ButtonGroup>
+					)
+					||
+					(
+						props.rightBtnText
+						&&
+						<ButtonGroup>
+							<Fade bottom>
+								<RightButton>
+									{props.rightBtnText}
+								</RightButton>
+							</Fade>
+						</ButtonGroup>
+					)
+				}
+				{
+					(
+						props.footer
+						&&
+						<Footer footer={props.footer} />
+					)
+					||
+					<DownArrow src="/images/down-arrow.svg" />
+				}
+			</Buttons>
+		</Wrap>
 	)
 }
 export default Section;
 
 const Wrap = styled.div`
-width: 100vw;
-height: 100vh;
+max-width: 100vw;
+max-height: 100vh;
+min-width: 100vw;
+min-height: 100vh;
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 background-image: ${props => `url("/images/${props.bgImage}")`};
 scroll-snap-align: start;
-display: ${props => props.show ? 'flex' : 'none'};
+display: flex;
 flex-direction: column;
 justify-content: space-between;
 align-items: center;
 z-index: -1;
+@media(max-width:768px){
+    // max-height: 95vh;
+// min-height: 95vh;
+}
 `
 
 const ItemText = styled.div`
 z-index: -1;
 padding-top: 15vh;
 text-align: center;
+a {  
+text-decoration: underline;
+color: rgba(0,0,0, 0.6);
+font-weight: 500;
+}
+p {
+color: rgba(0,0,0, 0.6);
+font-weight: 500;
+}
+a:hover{
+color: rgba(0,0,0, 0.9);
+}
 `
 
 const ButtonGroup = styled.div`
