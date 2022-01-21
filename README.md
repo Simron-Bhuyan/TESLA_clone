@@ -1,3 +1,10 @@
+Technologies used : CSS, Javascript, Redux
+
+Framework used: Reactjs
+
+This website is the clone of Tesla :  
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
